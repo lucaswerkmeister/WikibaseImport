@@ -21,6 +21,8 @@
 	},
 	"config": {
 		"WBImportSourceApi": "https://www.wikidata.org/w/api.php",
+		"WBImportSourceURL": "https://www.wikidata.org",
+		"WBImportSourceName": "Wikidata",
 		"WBImportQueryUrl": "https://query.wikidata.org/bigdata/namespace/wdq/sparql",
 		"WBImportQueryPrefixes": {
 			"wikibase": "http://wikiba.se/ontology#",
@@ -35,6 +37,7 @@
 		]
 	},
 	"SpecialPages": {
+		"ImportEntity": "Wikibase\\Import\\Specials\\SpecialImportEntity::newFromGlobalState"
 	},
 	"manifest_version": 1
 }
