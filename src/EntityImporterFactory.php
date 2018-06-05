@@ -70,7 +70,7 @@ class EntityImporterFactory {
 				$this->getApiEntityLookup(),
 				$this->entityStore,
 				$this->getImportedEntityMappingStore(),
-				new PagePropsStatementCountLookup( $this->loadBalancer ),
+				new PagePropsStatementCountLookup( $this->loadBalancer, $this->getEntityNamespaceLookup() ),
 				$this->logger
 			);
 		}
@@ -101,7 +101,7 @@ class EntityImporterFactory {
 		);
 	}
 
-	private function getImportedEntityMappingStore() {
+	public function getImportedEntityMappingStore() {
 		if ( $this->importedEntityMappingStore === null ) {
 			$wikibaseRepo = WikibaseRepo::getDefaultInstance();
 
@@ -127,7 +127,13 @@ class EntityImporterFactory {
 			new DataValueSerializer()
 		);
 	}
+
+	private function getEntityNamespaceLookup() {
+		$wikibaseRepo = WikibaseRepo::getDefaultInstance();
+
+		return $wikibaseRepo->getEntityNamespaceLookup();
+	}
 }
 
-$maintClass = "Wikibase\Import\Maintenance\ImportEntities";
-require_once RUN_MAINTENANCE_IF_MAIN;
+//$maintClass = "Wikibase\Import\Maintenance\ImportEntities";
+//require_once RUN_MAINTENANCE_IF_MAIN;
