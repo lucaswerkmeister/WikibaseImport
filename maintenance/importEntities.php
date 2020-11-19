@@ -109,7 +109,7 @@ class ImportEntities extends \Maintenance {
 		);
 
 		return new EntityIdListBuilderFactory(
-			WikibaseRepo::getDefaultInstance()->getEntityIdParser(),
+			WikibaseRepo::getEntityIdParser(),
 			new PropertyIdLister(),
 			$queryRunner,
 			$this->getConfig()->get( 'WBImportSourceApi' )

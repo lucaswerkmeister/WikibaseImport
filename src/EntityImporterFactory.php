@@ -103,11 +103,9 @@ class EntityImporterFactory {
 
 	private function getImportedEntityMappingStore() {
 		if ( $this->importedEntityMappingStore === null ) {
-			$wikibaseRepo = WikibaseRepo::getDefaultInstance();
-
 			$this->importedEntityMappingStore = new DBImportedEntityMappingStore(
 				$this->loadBalancer,
-				$wikibaseRepo->getEntityIdParser()
+				WikibaseRepo::getEntityIdParser()
 			);
 		}
 
